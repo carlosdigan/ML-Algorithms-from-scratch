@@ -10,9 +10,7 @@ class LinearRegression:
         self.X = self.insertOnes(X) #Add a column of ones to account for intercept 
         self.y = y.reshape(-1, 1) #Reshape so y is a column vector
         self.lr = learning_rate
-        self.theta = np.zeros((self.num_columns, 1))
-        
-        
+        self.theta = np.zeros((self.num_columns, 1))       
     
     def insertOnes(self, X, train_data=True): 
         if X.ndim == 1: #If X is a 1-D array raise error
@@ -34,8 +32,7 @@ class LinearRegression:
             self.std_values = X.std(axis=0)    
             
         return (X - self.mean_values) / self.std_values
-        
-        
+           
     def cost(self):
         error_squared = np.square(self.hTheta - self.y)
         j = 1/(2 * self.num_rows) * np.sum(error_squared)
@@ -62,6 +59,4 @@ class LinearRegression:
         X = self.insertOnes(X, False)
         predictions = np.dot(X, self.theta)
         return predictions
-    
-        
-        
+         

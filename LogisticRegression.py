@@ -68,7 +68,4 @@ class LogisticRegression:
     def predict(self, X):
         X = self.insertOnes(X, False)
         predictions = self.sigmoid(np.dot(X, self.theta)) + 0.01 #Add 0.01 so it rounds values at 0.50 up to 1 
-        return predictions.round()
-    
-        
-        
+        return predictions.round()           

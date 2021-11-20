@@ -8,9 +8,6 @@ class NeuralNetwork:
         self.all_bias = self.InitBias(nodes)
         self.X = X.T
         self.y = self.hot_encode(y)
-        #self.y = np.array([[0, 0]])
-
-
 
     @staticmethod
     def hot_encode(y):
@@ -20,8 +17,6 @@ class NeuralNetwork:
         for i in range(len(y)):
             Y[i, (int(y[i][0]))] = 1
         return Y.T
-
-
 
     def randInitWeights(self, nodes):
         all_weights = []
@@ -83,11 +78,8 @@ class NeuralNetwork:
                 dz = np.dot(self.all_weights[-i].T, dz) * self.sigmoidPrime(Z.pop())
                 self.all_weights[-i] = self.all_weights[-i] - self.lr * dw
                 self.all_bias[-i] = self.all_bias[-i] - self.lr * db
-
-
-
+		
             iteration += 1
-
 
     def predict(self):
         predictions = self.forwardPropagation()
